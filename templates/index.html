@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Audio Manager</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎵 User Audio Manager</h1>
+            <p class="subtitle">Manage user profiles and audio files</p>
+        </header>
+
+        <div class="main-content">
+            <!-- User Selection Section -->
+            <section class="card user-selection">
+                <h2>Select User</h2>
+                <div class="user-input-group">
+                    <label for="userId">User ID:</label>
+                    <input type="number" id="userId" placeholder="Enter user ID" min="1">
+                    <button onclick="fetchUserDetails()" class="btn btn-primary">Fetch User Details</button>
+                </div>
+                <div class="user-list-section">
+                    <h3>Available Users</h3>
+                    <button onclick="loadUsers()" class="btn btn-secondary">Load All Users</button>
+                    <div id="usersList" class="users-list"></div>
+                </div>
+            </section>
+
+            <!-- User Details Section -->
+            <section class="card user-details" id="userDetailsSection" style="display: none;">
+                <h2>User Details</h2>
+                <div id="userDetails" class="user-info"></div>
+            </section>
+
+            <!-- Audio Upload Section -->
+            <section class="card audio-upload" id="audioUploadSection" style="display: none;">
+                <h2>Upload Audio File</h2>
+                <form id="audioUploadForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="audioFile">Select Audio File:</label>
+                        <input type="file" id="audioFile" accept="audio/*" required>
+                        <small>Supported formats: MP3, WAV, OGG, M4A, AAC</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="audioTitle">Title (optional):</label>
+                        <input type="text" id="audioTitle" placeholder="Enter audio title">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload Audio</button>
+                </form>
+                <div id="uploadStatus" class="status-message"></div>
+            </section>
+
+            <!-- Audio Player Section -->
+            <section class="card audio-player" id="audioPlayerSection" style="display: none;">
+                <h2>Audio Player</h2>
+                <div id="audioFilesList" class="audio-files-list"></div>
+                <div class="player-controls">
+                    <audio id="audioPlayer" controls></audio>
+                </div>
+                <div class="player-info">
+                    <p id="currentTrack">No track selected</p>
+                </div>
+            </section>
+        </div>
+
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
+
